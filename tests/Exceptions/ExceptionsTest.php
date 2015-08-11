@@ -30,11 +30,29 @@ class ExceptionsTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
+     * @expectedException        Comodojo\Exception\DispatcherException
+     */
+    public function testDispatcherException() {
+
+        throw new \Comodojo\Exception\DispatcherException("Test Exception", 1);
+
+    }
+
+    /**
      * @expectedException        Comodojo\Exception\HttpException
      */
     public function testHttpException() {
 
         throw new \Comodojo\Exception\HttpException("Test Exception", 1);
+
+    }
+
+    /**
+     * @expectedException        Comodojo\Exception\IOException
+     */
+    public function testIOException() {
+
+        throw new \Comodojo\Exception\IOException("Test Exception", 1);
 
     }
 
@@ -66,11 +84,38 @@ class ExceptionsTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
+     * @expectedException        Comodojo\Exception\ShellException
+     */
+    public function testShellException() {
+
+        throw new \Comodojo\Exception\ShellException("Test Exception", 1);
+
+    }
+
+    /**
+     * @expectedException        Comodojo\Exception\TaskException
+     */
+    public function testTaskException() {
+
+        throw new \Comodojo\Exception\TaskException("Test Exception", 1);
+
+    }
+
+    /**
      * @expectedException        Comodojo\Exception\WPException
      */
     public function testWPException() {
 
         throw new \Comodojo\Exception\WPException("Test Exception", 1);
+
+    }
+
+    /**
+     * @expectedException        Comodojo\Exception\XMLException
+     */
+    public function testXMLException() {
+
+        throw new \Comodojo\Exception\XMLException("Test Exception", 1);
 
     }
 
