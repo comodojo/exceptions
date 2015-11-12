@@ -19,4 +19,32 @@
  * THE SOFTWARE.
  */
 
-class TaskException extends \Exception {}
+class TaskException extends \Exception {
+
+    private $worklog_id = null;
+
+    private $end_timestamp = null;
+
+    public function __construct($message = null, $code = 0, \Exception $previous = null, $worklog_id = null) {
+        
+        $this->worklog_id = $worklog_id;
+
+        $this->end_timestamp = microtime(true);
+
+        parent::__construct($message, $code, $previous);
+
+    }
+
+    public function getWorklogId() {
+
+        return $this->worklog_id;
+
+    }
+
+    public function getEndTimestamp() {
+
+        return $this->end_timestamp;
+
+    }
+
+}
