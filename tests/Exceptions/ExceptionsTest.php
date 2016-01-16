@@ -137,4 +137,22 @@ class ExceptionsTest extends \PHPUnit_Framework_TestCase {
 
     }
 
+    /**
+     * @expectedException        Comodojo\Exception\ComposerRetryException
+     */
+    public function testComposerRetryException() {
+
+        throw new \Comodojo\Exception\ComposerRetryException("Test Exception", 1);
+
+    }
+
+    /**
+     * @expectedException        Comodojo\Exception\ComposerEventException
+     */
+    public function testComposerEventException() {
+
+        throw new \Comodojo\Exception\ComposerEventException("Test Exception", 1);
+
+    }
+
 }
