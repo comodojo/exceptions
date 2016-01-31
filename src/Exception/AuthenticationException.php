@@ -1,7 +1,7 @@
 <?php namespace Comodojo\Exception;
 
 /**
- * DispatcherException handler; nothing special, just an implementation of
+ * AuthenticationException; nothing special, just an extension of
  * standard Exception class.
  *
  * @package     Comodojo Spare Parts
@@ -19,22 +19,4 @@
  * THE SOFTWARE.
  */
 
-class DispatcherException extends \Exception {
-
-    private $status;
-
-    public function __construct($message = null, $code = 0, \Exception $previous = null, $status = null) {
-
-        $this->$status = empty($status) ? 500 : $status;
-
-        parent::__construct($message, $code, $previous);
-
-    }
-
-    public function getStatus() {
-
-        return $this->status;
-
-    }
-
-}
+class AuthenticationException extends \Exception {}
