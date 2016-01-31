@@ -1,15 +1,15 @@
 <?php namespace Comodojo\Exception;
 
-/** 
+/**
  * RetryException
- * 
+ *
  * @package     Comodojo Spare Parts
  * @author      Marco Castiello <marco.castiello@gmail.com>
  * @author      Marco Giovinazzi <marco.giovinazzi@comodojo.org>
  * @license     GPL-3.0+
  *
  * LICENSE:
- * 
+ *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as
  * published by the Free Software Foundation, either version 3 of the
@@ -24,4 +24,4 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-class ComposerEventException extends \Exception {}
+class ComposerRetryException extends \Exception {}

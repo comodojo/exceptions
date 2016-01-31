@@ -34,7 +34,7 @@ class ExceptionsTest extends \PHPUnit_Framework_TestCase {
      */
     public function testDispatcherException() {
 
-        throw new \Comodojo\Exception\DispatcherException("Test Exception", 1);
+        throw new \Comodojo\Exception\DispatcherException("Test Exception", 1, null, 503);
 
     }
 
@@ -97,7 +97,7 @@ class ExceptionsTest extends \PHPUnit_Framework_TestCase {
      */
     public function testTaskException() {
 
-        throw new \Comodojo\Exception\TaskException("Test Exception", 1);
+        throw new \Comodojo\Exception\TaskException("Test Exception", 1, null, 42);
 
     }
 
@@ -152,6 +152,33 @@ class ExceptionsTest extends \PHPUnit_Framework_TestCase {
     public function testComposerEventException() {
 
         throw new \Comodojo\Exception\ComposerEventException("Test Exception", 1);
+
+    }
+
+    /**
+     * @expectedException        Comodojo\Exception\AuthenticationException
+     */
+    public function testAuthenticationException() {
+
+        throw new \Comodojo\Exception\AuthenticationException("Test Exception", 1);
+
+    }
+
+    /**
+     * @expectedException        Comodojo\Exception\ConfigurationException
+     */
+    public function testConfigurationException() {
+
+        throw new \Comodojo\Exception\ConfigurationException("Test Exception", 1);
+
+    }
+
+    /**
+     * @expectedException        Comodojo\Exception\InstallerException
+     */
+    public function testInstallerException() {
+
+        throw new \Comodojo\Exception\InstallerException("Test Exception", 1);
 
     }
 

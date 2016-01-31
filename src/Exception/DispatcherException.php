@@ -25,7 +25,7 @@ class DispatcherException extends \Exception {
 
     public function __construct($message = null, $code = 0, \Exception $previous = null, $status = null) {
 
-        $this->$status = empty($status) ? 500 : $status;
+        $this->status = empty($status) ? 500 : $status;
 
         parent::__construct($message, $code, $previous);
 
