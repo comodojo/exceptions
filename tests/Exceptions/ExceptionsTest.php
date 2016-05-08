@@ -34,7 +34,7 @@ class ExceptionsTest extends \PHPUnit_Framework_TestCase {
      */
     public function testDispatcherException() {
 
-        throw new \Comodojo\Exception\DispatcherException("Test Exception", 1, null, 503);
+        throw new \Comodojo\Exception\DispatcherException("Test Exception", 1, null, 503, array("Allow"=>"GET,PUT"));
 
     }
 

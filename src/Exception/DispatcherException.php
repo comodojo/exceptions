@@ -23,7 +23,9 @@ class DispatcherException extends \Exception {
 
     private $status;
 
-    public function __construct($message = null, $code = 0, \Exception $previous = null, $status = null) {
+    private $headers = array();
+
+    public function __construct($message = null, $code = 0, \Exception $previous = null, $status = null, $headers = array()) {
 
         $this->status = empty($status) ? 500 : $status;
 
@@ -34,6 +36,12 @@ class DispatcherException extends \Exception {
     public function getStatus() {
 
         return $this->status;
+
+    }
+
+    public function getHeaders() {
+
+        return $this->headers;
 
     }
 
