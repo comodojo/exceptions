@@ -26,11 +26,10 @@ class ExceptionsTest extends TestCase
     public function testDispatcherException()
     {
         $this->expectException("\Comodojo\Exception\DispatcherException");
-        throw new \Comodojo\Exception\DispatcherException("Test Exception", 1, null);
         try{
-            throw new \Comodojo\Exception\DispatcherException("Test Exception", 1, null, $status, $headers);
+            throw new \Comodojo\Exception\DispatcherException("Test Exception", 1, null);
         } catch (\Comodojo\Exception\DispatcherException $e) {
-            $this->assertNull($e->getStatus());
+            $this->assertEquals(500, $e->getStatus());
             $this->assertEmpty($e->getHeaders());
             throw $e;
         }
