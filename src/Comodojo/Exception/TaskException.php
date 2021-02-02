@@ -1,4 +1,8 @@
-<?php namespace Comodojo\Exception;
+<?php
+
+namespace Comodojo\Exception;
+
+use \Exception;
 
 /**
  * TaskException handler; nothing special, just an implementation of
@@ -19,32 +23,27 @@
  * THE SOFTWARE.
  */
 
-class TaskException extends \Exception {
+class TaskException extends Exception
+{
 
-    private $worklog_id = null;
+    private ?int $worklog_id;
 
-    private $end_timestamp = null;
+    private float $end_timestamp;
 
-    public function __construct($message = null, $code = 0, \Exception $previous = null, $worklog_id = null) {
-        
-        $this->worklog_id = $worklog_id;
-
+    public function __construct(string $message = null, int $code = 0, Exception $previous = null, int $worklog_id = null)
+    {
+        $this->worklog_id ??= $worklog_id;
         $this->end_timestamp = microtime(true);
-
         parent::__construct($message, $code, $previous);
-
     }
 
-    public function getWorklogId() {
-
+    public function getWorklogId(): ?int
+    {
         return $this->worklog_id;
-
     }
 
-    public function getEndTimestamp() {
-
+    public function getEndTimestamp(): float
+    {
         return $this->end_timestamp;
-
     }
-
 }

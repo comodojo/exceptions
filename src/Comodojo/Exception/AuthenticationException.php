@@ -1,4 +1,6 @@
-<?php namespace Comodojo\Exception;
+<?php
+
+namespace Comodojo\Exception;
 
 /**
  * AuthenticationException; nothing special, just an extension of
@@ -19,4 +21,6 @@
  * THE SOFTWARE.
  */
 
-class AuthenticationException extends \Exception {}
+class AuthenticationException extends \Exception
+{
+}

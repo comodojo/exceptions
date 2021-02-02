@@ -1,4 +1,6 @@
-<?php namespace Comodojo\Exception;
+<?php
+
+namespace Comodojo\Exception;
 
 /**
  * InstallerException; nothing special, just an extension of
@@ -19,4 +21,6 @@
  * THE SOFTWARE.
  */
 
-class InstallerException extends \Exception {}
+class InstallerException extends \Exception
+{
+}

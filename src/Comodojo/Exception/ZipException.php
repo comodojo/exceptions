@@ -1,4 +1,6 @@
-<?php namespace Comodojo\Exception;
+<?php
+
+namespace Comodojo\Exception;
 
 /**
  * ZipException; nothing special, just an extension of
@@ -19,4 +21,6 @@
  * THE SOFTWARE.
  */
 
-class ZipException extends \Exception {}
+class ZipException extends \Exception
+{
+}

@@ -1,4 +1,6 @@
-<?php namespace Comodojo\Exception;
+<?php
+
+namespace Comodojo\Exception;
 
 /** 
  * EventException
@@ -24,4 +26,6 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-class ComposerEventException extends \Exception {}
+class ComposerEventException extends \Exception
+{
+}

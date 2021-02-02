@@ -1,4 +1,6 @@
-<?php namespace Comodojo\Exception;
+<?php
+
+namespace Comodojo\Exception;
 
 /**
  * DatabaseException; just an extension of
@@ -19,4 +21,6 @@
  * THE SOFTWARE.
  */
 
-class DatabaseException extends \Exception {}
+class DatabaseException extends \Exception
+{
+}

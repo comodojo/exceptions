@@ -1,4 +1,6 @@
-<?php namespace Comodojo\Exception;
+<?php
+
+namespace Comodojo\Exception;
 
 /**
  * HttpException; nothing special, just an extension of
@@ -19,4 +21,6 @@
  * THE SOFTWARE.
  */
 
-class HttpException extends \Exception {}
+class HttpException extends \Exception
+{
+}

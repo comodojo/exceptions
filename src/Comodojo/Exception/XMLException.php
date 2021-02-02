@@ -1,4 +1,6 @@
-<?php namespace Comodojo\Exception;
+<?php
+
+namespace Comodojo\Exception;
 
 /**
  * XMLException handler; nothing special, just an implementation of
@@ -19,4 +21,6 @@
  * THE SOFTWARE.
  */
 
-class XMLException extends \Exception {}
+class XMLException extends \Exception
+{
+}

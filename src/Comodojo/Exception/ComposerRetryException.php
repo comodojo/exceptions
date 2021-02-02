@@ -1,4 +1,6 @@
-<?php namespace Comodojo\Exception;
+<?php
+
+namespace Comodojo\Exception;
 
 /**
  * RetryException
@@ -24,4 +26,6 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-class ComposerRetryException extends \Exception {}
+class ComposerRetryException extends \Exception
+{
+}

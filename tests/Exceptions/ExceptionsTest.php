@@ -1,212 +1,187 @@
-<?php
+<?php declare(strict_types=1);
 
-class ExceptionsTest extends \PHPUnit_Framework_TestCase {
+use \PHPUnit\Framework\TestCase;
 
-    /**
-     * @expectedException        Comodojo\Exception\CacheException
-     */
-    public function testCacheException() {
+class ExceptionsTest extends TestCase
+{
 
+    public function testCacheException()
+    {
+        $this->expectException("\Comodojo\Exception\CacheException");
         throw new \Comodojo\Exception\CacheException("Test Exception", 1);
-
     }
 
-    /**
-     * @expectedException        Comodojo\Exception\CookieException
-     */
-    public function testCookieException() {
-
+    public function testCookieException()
+    {
+        $this->expectException("\Comodojo\Exception\CookieException");
         throw new \Comodojo\Exception\CookieException("Test Exception", 1);
-
     }
 
-    /**
-     * @expectedException        Comodojo\Exception\DatabaseException
-     */
-    public function testDatabaseException() {
-
+    public function testDatabaseException()
+    {
+        $this->expectException("\Comodojo\Exception\DatabaseException");
         throw new \Comodojo\Exception\DatabaseException("Test Exception", 1);
-
     }
 
-    /**
-     * @expectedException        Comodojo\Exception\DispatcherException
-     */
-    public function testDispatcherException() {
-
-        throw new \Comodojo\Exception\DispatcherException("Test Exception", 1, null, 503, array("Allow"=>"GET,PUT"));
-
+    public function testDispatcherException()
+    {
+        $this->expectException("\Comodojo\Exception\DispatcherException");
+        throw new \Comodojo\Exception\DispatcherException("Test Exception", 1, null);
+        try{
+            throw new \Comodojo\Exception\DispatcherException("Test Exception", 1, null, $status, $headers);
+        } catch (\Comodojo\Exception\DispatcherException $e) {
+            $this->assertNull($e->getStatus());
+            $this->assertEmpty($e->getHeaders());
+            throw $e;
+        }
     }
 
-    /**
-     * @expectedException        Comodojo\Exception\HttpException
-     */
-    public function testHttpException() {
+    public function testDispatcherExceptionCustomAttributes()
+    {
+        $headers = ["Allow" => "GET,PUT"];
+        $status = 503;
+        $this->expectException("\Comodojo\Exception\DispatcherException");
+        try{
+            throw new \Comodojo\Exception\DispatcherException("Test Exception", 1, null, $status, $headers);
+        } catch (\Comodojo\Exception\DispatcherException $e) {
+            $this->assertEquals($status, $e->getStatus());
+            $this->assertEquals($headers, $e->getHeaders());
+            throw $e;
+        }
+    }
 
+    public function testHttpException()
+    {
+        $this->expectException("\Comodojo\Exception\HttpException");
         throw new \Comodojo\Exception\HttpException("Test Exception", 1);
-
     }
 
-    /**
-     * @expectedException        Comodojo\Exception\IOException
-     */
-    public function testIOException() {
-
+    public function testIOException()
+    {
+        $this->expectException("\Comodojo\Exception\IOException");
         throw new \Comodojo\Exception\IOException("Test Exception", 1);
-
     }
 
-    /**
-     * @expectedException        Comodojo\Exception\LdaphException
-     */
-    public function testLdaphException() {
-
+    public function testLdaphException()
+    {
+        $this->expectException("\Comodojo\Exception\LdaphException");
         throw new \Comodojo\Exception\LdaphException("Test Exception", 1);
-
     }
 
-    /**
-     * @expectedException        Comodojo\Exception\MetaWeblogException
-     */
-    public function testMetaWeblogException() {
-
+    public function testMetaWeblogException()
+    {
+        $this->expectException("\Comodojo\Exception\MetaWeblogException");
         throw new \Comodojo\Exception\MetaWeblogException("Test Exception", 1);
-
     }
 
-    /**
-     * @expectedException        Comodojo\Exception\RpcException
-     */
-    public function testRpcException() {
-
+    public function testRpcException()
+    {
+        $this->expectException("\Comodojo\Exception\RpcException");
         throw new \Comodojo\Exception\RpcException("Test Exception", 1);
-
     }
 
-    /**
-     * @expectedException        Comodojo\Exception\ShellException
-     */
-    public function testShellException() {
-
+    public function testShellException()
+    {
+        $this->expectException("\Comodojo\Exception\ShellException");
         throw new \Comodojo\Exception\ShellException("Test Exception", 1);
-
     }
 
-    /**
-     * @expectedException        Comodojo\Exception\TaskException
-     */
-    public function testTaskException() {
-
-        throw new \Comodojo\Exception\TaskException("Test Exception", 1, null, 42);
-
+    public function testTaskException()
+    {
+        $current_timestamp = microtime(true);
+        $this->expectException("\Comodojo\Exception\TaskException");
+        try{
+            throw new \Comodojo\Exception\TaskException("Test Exception", 1, null);
+        } catch (\Comodojo\Exception\TaskException $e) {
+            $this->assertGreaterThan($current_timestamp, $e->getEndTimestamp());
+            $this->assertNull($e->getWorklogId());
+            throw $e;
+        }
     }
 
-    /**
-     * @expectedException        Comodojo\Exception\WPException
-     */
-    public function testWPException() {
+    public function testTaskExceptionCustomAttributes()
+    {
+        $wid = 42;
+        $current_timestamp = microtime(true);
+        $this->expectException("\Comodojo\Exception\TaskException");
+        try{
+            throw new \Comodojo\Exception\TaskException("Test Exception", 1, null, $wid);
+        } catch (\Comodojo\Exception\TaskException $e) {
+            $this->assertGreaterThan($current_timestamp, $e->getEndTimestamp());
+            $this->assertEquals($wid, $e->getWorklogId());
+            throw $e;
+        }
+    }
 
+    public function testWPException()
+    {
+        $this->expectException("\Comodojo\Exception\WPException");
         throw new \Comodojo\Exception\WPException("Test Exception", 1);
-
     }
 
-    /**
-     * @expectedException        Comodojo\Exception\XMLException
-     */
-    public function testXMLException() {
-
+    public function testXMLException()
+    {
+        $this->expectException("\Comodojo\Exception\XMLException");
         throw new \Comodojo\Exception\XMLException("Test Exception", 1);
-
     }
 
-    /**
-     * @expectedException        Comodojo\Exception\XmlrpcException
-     */
-    public function testXmlrpcException() {
-
+    public function testXmlrpcException()
+    {
+        $this->expectException("\Comodojo\Exception\XmlrpcException");
         throw new \Comodojo\Exception\XmlrpcException("Test Exception", 1);
-
     }
 
-    /**
-     * @expectedException        Comodojo\Exception\ZipException
-     */
-    public function testZipException() {
-
+    public function testZipException()
+    {
+        $this->expectException("\Comodojo\Exception\ZipException");
         throw new \Comodojo\Exception\ZipException("Test Exception", 1);
-
     }
 
-    /**
-     * @expectedException        Comodojo\Exception\ComposerRetryException
-     */
-    public function testComposerRetryException() {
-
+    public function testComposerRetryException()
+    {
+        $this->expectException("\Comodojo\Exception\ComposerRetryException");
         throw new \Comodojo\Exception\ComposerRetryException("Test Exception", 1);
-
     }
 
-    /**
-     * @expectedException        Comodojo\Exception\ComposerEventException
-     */
-    public function testComposerEventException() {
-
+    public function testComposerEventException()
+    {
+        $this->expectException("\Comodojo\Exception\ComposerEventException");
         throw new \Comodojo\Exception\ComposerEventException("Test Exception", 1);
-
     }
 
-    /**
-     * @expectedException        Comodojo\Exception\AuthenticationException
-     */
-    public function testAuthenticationException() {
-
+    public function testAuthenticationException()
+    {
+        $this->expectException("\Comodojo\Exception\AuthenticationException");
         throw new \Comodojo\Exception\AuthenticationException("Test Exception", 1);
-
     }
 
-    /**
-     * @expectedException        Comodojo\Exception\ConfigurationException
-     */
-    public function testConfigurationException() {
-
+    public function testConfigurationException()
+    {
+        $this->expectException("\Comodojo\Exception\ConfigurationException");
         throw new \Comodojo\Exception\ConfigurationException("Test Exception", 1);
-
     }
 
-    /**
-     * @expectedException        Comodojo\Exception\InstallerException
-     */
-    public function testInstallerException() {
-
+    public function testInstallerException()
+    {
+        $this->expectException("\Comodojo\Exception\InstallerException");
         throw new \Comodojo\Exception\InstallerException("Test Exception", 1);
-
     }
 
-    /**
-     * @expectedException        Comodojo\Exception\InvalidCacheArgumentException
-     */
-    public function testInvalidCacheArgumentException() {
-
+    public function testInvalidCacheArgumentException()
+    {
+        $this->expectException("\Comodojo\Exception\InvalidCacheArgumentException");
         throw new \Comodojo\Exception\InvalidCacheArgumentException("Test Exception", 1);
-
     }
 
-    /**
-     * @expectedException        Comodojo\Exception\SimpleCacheException
-     */
-    public function testSimpleCacheException() {
-
+    public function testSimpleCacheException()
+    {
+        $this->expectException("\Comodojo\Exception\SimpleCacheException");
         throw new \Comodojo\Exception\SimpleCacheException("Test Exception", 1);
-
     }
 
-    /**
-     * @expectedException        Comodojo\Exception\InvalidSimpleCacheArgumentException
-     */
-    public function testInvalidSimpleCacheArgumentException() {
-
+    public function testInvalidSimpleCacheArgumentException()
+    {
+        $this->expectException("\Comodojo\Exception\InvalidSimpleCacheArgumentException");
         throw new \Comodojo\Exception\InvalidSimpleCacheArgumentException("Test Exception", 1);
-
     }
-
 }

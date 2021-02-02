@@ -1,4 +1,6 @@
-<?php namespace Comodojo\Exception;
+<?php
+
+namespace Comodojo\Exception;
 
 /**
  * DispatcherException handler; nothing special, just an implementation of
@@ -19,30 +21,27 @@
  * THE SOFTWARE.
  */
 
-class DispatcherException extends \Exception {
+class DispatcherException extends \Exception
+{
 
-    private $status;
+    private int $status;
 
-    private $headers = array();
+    private array $headers = [];
 
-    public function __construct($message = null, $code = 0, \Exception $previous = null, $status = null, $headers = array()) {
-
-        $this->status = empty($status) ? 500 : $status;
-
+    public function __construct($message = null, $code = 0, \Exception $previous = null, int $status = null, array $headers = [])
+    {
+        $this->status = $status ?? 500;
+        $this->headers = empty($headers) ? [] : $headers;
         parent::__construct($message, $code, $previous);
-
     }
 
-    public function getStatus() {
-
+    public function getStatus(): int
+    {
         return $this->status;
-
     }
 
-    public function getHeaders() {
-
+    public function getHeaders(): array
+    {
         return $this->headers;
-
     }
-
 }

@@ -1,4 +1,6 @@
-<?php namespace Comodojo\Exception;
+<?php
+
+namespace Comodojo\Exception;
 
 use \Psr\Cache\CacheException as PsrCacheException;
 use \Exception;
@@ -22,4 +24,6 @@ use \Exception;
  * THE SOFTWARE.
  */
 
-class CacheException extends Exception implements PsrCacheException {}
+class CacheException extends Exception implements PsrCacheException
+{
+}
