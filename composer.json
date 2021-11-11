@@ -1,5 +1,5 @@
 {
-    "name": "pmarcelli/exceptions",
+    "name": "comodojo/exceptions",
     "description": "Common exceptions for comodojo libs and frameworks",
     "license": "MIT",
     "type": "library",
